@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* LOADING */
+#loadingScreen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart {
+    width: 80px;
+    height: 80px;
+    background: red;
+    transform: rotate(-45deg);
+    animation: beat 1s infinite;
+    position: relative;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    width: 80px;
+    height: 80px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before { top: -40px; }
+.heart::after { left: 40px; }
+
+@keyframes beat {
+    0%,100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.2); }
+}
+
+.hidden { display: none; }
+
+/* PASSWORD */
+#passwordScreen {
+    margin-top: 150px;
+}
+
+input {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    width: 70%;
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    margin-top: 20px;
+    background: #ff4da6;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* MAIN PAGE */
+.parallax {
+    min-height: 200vh;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, #0f0c29, #ff4da6);
+}
+
+.parallax-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('images/foto1.jpg') center/cover no-repeat;
+    opacity: 0.15;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.gallery img {
+    width: 90%;
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+.poem {
+    margin-top: 50px;
+    line-height: 1.7;
+}
+
+/* FLOATING HEARTS */
+#heartsCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+#glowOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle, rgba(255,77,166,0.2), transparent);
+    pointer-events: none;
+    transition: 0.1s;
+}
+
+.chorus {
+    font-size: 22px;
+    margin-top: 40px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: 2s ease;
+    color: #fff;
+    text-shadow: 0 0 20px #ff4da6;
+}
+
+.chorus.show {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Zoom cinematic effect */
+.zoom-effect {
+    animation: slowZoom 10s forwards;
+}
+
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
